@@ -12,13 +12,13 @@ namespace OilView.Test
         [TestMethod]
         public async Task TestMethod1()
         {
-            var path = @"c:\Temp\test.json";
+            var path = @"\Test\test.json";
 
             var testData = new FileData(DateTime.Now, "todoJob", "doneJob");
             var manager = new FileManager();
             await manager.WriteAsync(path, testData);
             var actual = await manager.ReadAsync(path);
-            Assert.AreEqual(testData, actual);
+            Assert.AreEqual($"{testData.ToDoJob}{testData.DoneJob}", $"{actual.ToDoJob}{actual.DoneJob}");
         }
     }
 }
